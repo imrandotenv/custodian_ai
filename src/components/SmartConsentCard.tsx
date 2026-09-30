@@ -42,6 +42,7 @@ export default function SmartConsentCard({
   className = '',
 }: SmartConsentCardProps) {
   const [isUnlocked, setIsUnlocked] = useState(false);
+  const [isHoveredButton, setIsHoveredButton] = useState(false);
 
 
   const handleAgree = () => {
