@@ -1,0 +1,62 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  TOURIST
+  CUSTODIAN
+  ADMIN
+}
+
+model User {
+  id             String          @id @default(cuid())
+  name           String
+  email          String?         @unique
+  role           Role            @default(TOURIST)
+  adiKarmayogiId String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  artworks       Artwork[]
+  culturalAssets CulturalAsset[]
+
+  @@map("users")
+}
+
+model Artwork {
+  id              String   @id @default(cuid())
+  title           String
+  description     String?
+  craftSpecialty  String?
+  price           Float    @default(0)
+  requiresConsent Boolean  @default(true)
+  imageUrl        String?
+  giTagNumber     String?
+  custodianId     String?
+  custodian       User?    @relation(fields: [custodianId], references: [id], onDelete: Cascade)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("artworks")
+}
+
+model CulturalAsset {
+  id              String   @id @default(cuid())
+  title           String
+  description     String?
+  craftSpecialty  String?
+  price           Float    @default(0)
+  requiresConsent Boolean  @default(true)
+  imageUrl        String?
+  giTagNumber     String?
+  custodianId     String?
+  custodian       User?    @relation(fields: [custodianId], references: [id], onDelete: Cascade)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("cultural_assets")
+}
