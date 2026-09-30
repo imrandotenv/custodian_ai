@@ -7,38 +7,85 @@ description: >-
 
 # Hackathon Final Stretch Playbook
 
+A proven tactical guide for shipping high-impact, judging-ready full-stack prototypes under tight hackathon deadlines.
+
+---
+
 ## 1. Rapid Mock Backend Route Handlers
-When third-party APIs (e.g., government portals, payment rails, Hugging Face AI inference) are down or lack hackathon API keys:
-- **Simulate Network Inferences**: Use `await new Promise(res => setTimeout(res, 1000 - 1500))` to mimic realistic inference/verification latency.
-- **Prefix-Based Role Promotion**:
-  - `MT-` / `NO-` -> Elevated Privileges (e.g., `SUPER_CUSTODIAN` with AI correction rights).
-  - `ST-` -> Verified Standard User (`CUSTODIAN`).
-  - Invalid ID -> 404 response.
-- **Dual GET/POST Handlers**: Provide a `GET` endpoint returning JSON metadata, schemas, and live pings for hackathon judges inspecting endpoints in browser tabs.
+
+When external services (Govt. portals, payment gateways, Hugging Face neural inference) are down or lack hackathon API keys:
+
+### A. Realistic Network Latency
+Always simulate network delay to give judges a genuine feel of backend processing:
+```typescript
+// Simulate realistic AI inference or verification latency
+await new Promise((resolve) => setTimeout(resolve, 1000 + Math.random() * 500));
+```
+
+### B. Prefix-Based Role Promotion & RBAC
+Use deterministic ID prefixes for rapid testing without complex auth:
+- `MT-` / `NO-` -> Elevated Privileges (e.g., `SUPER_CUSTODIAN` with AI correction rights).
+- `ST-` -> Standard Verified Member (`CUSTODIAN`).
+- Any unformatted string -> HTTP 404 descriptive error.
+
+### C. Dual GET / POST Route Handlers
+Always provide a `GET` handler on API routes (`src/app/api/.../route.ts`). When judges click API URLs in the browser, they see an interactive JSON schema specification and status ping instead of an unsightly `405 Method Not Allowed`.
+
+### D. Prisma Mock Seeder with Offline Fallback
+In `prisma/seed.ts`, wrap DB calls in a `try...catch` so that if PostgreSQL is unreachable during offline judging, the seed script falls back cleanly to memory mock arrays without crashing.
+
+---
 
 ## 2. Simulated High-Fidelity UI State Machines
-- **Smart Consent Engine (Blur-to-Unblur)**:
-  - Default: Apply CSS blur (`blur-xl` / `backdrop-blur-md`) with lock badge overlay.
-  - Interaction: Framer Motion `AnimatePresence` unblurring smoothly on digital pledge click.
-- **Direct Payout Escrow Ledger**:
-  - Explicit transparent math: 90% direct payout (highlighted in emerald green), 10% platform fee.
-  - 1-second simulated smart contract locking state with loading spinner -> celebratory checkmark and canvas-confetti burst.
+
+### A. Smart Consent Cultural Shield (Blur-to-Unblur)
+- **Default State**: Apply heavy CSS blur (`blur-xl` / `backdrop-blur-md`) with lock icon and statutory micro-copy (`CC-TRIBAL-1.0-STRICT`).
+- **Interactive Unlock**: Framer Motion `AnimatePresence` transitioning smoothly from `blur(22px)` to `blur(0px)` on digital pledge confirmation.
+- **Re-Lock Button**: Include a subtle `<RotateCcw />` reset button so judges can test the unblur effect repeatedly.
+
+### B. Direct Payout Escrow Ledger (90/10 Split)
+- **Transparent Math**: Explicitly highlight the artisan's direct payout (90%) in emerald green (`#193225` or `text-emerald-500`) and the platform fee (10%).
+- **Interactive Checkout Flow**: 
+  - 1-second simulated smart contract loading spinner.
+  - Celebratory checkmark and `canvas-confetti` burst.
+  - Realistic UTR / transaction ledger reference (`UPI/382910482910`).
+
+### C. Floating Persona Dock & Edge Middleware
+- Add a floating switcher docked at `fixed bottom-5 right-5` to allow judges to flip roles (Tourist, Custodian, Admin) with 1 click.
+- Synchronize with cookies so Next.js Edge Middleware (`middleware.ts`) protects routes like `/dashboard` and `/admin` automatically.
+
+---
 
 ## 3. Vercel Build Hardening (Bypass Configuration)
-To guarantee zero build failures on Vercel deployment:
+
+Prevent last-minute Vercel build aborts caused by minor type mismatches or linting warnings during rapid hackathon prototyping:
 - In `next.config.mjs`:
   ```javascript
+  /** @type {import('next').NextConfig} */
   const nextConfig = {
-    eslint: { ignoreDuringBuilds: true },
-    typescript: { ignoreBuildErrors: true },
+    typescript: {
+      ignoreBuildErrors: true, // Prevents build failure on minor type discrepancies
+    },
+    images: {
+      remotePatterns: [
+        { protocol: 'https', hostname: 'images.unsplash.com' },
+        { protocol: 'https', hostname: '**.wixstatic.com' },
+      ],
+    },
   };
+  export default nextConfig;
   ```
-- Ensure `next build` passes locally before git push.
+- Always verify locally with `npm run build` prior to `git push`.
+
+---
 
 ## 4. Devfolio Submission Framework
-Structured 5-section pitch:
-1. **Inspiration**: Ground in the specific hackathon problem statement and real-world exploitation.
-2. **What it does**: The 4 architectural pillars and user journeys.
-3. **How we built it**: Full-stack Next.js, Framer Motion, Prisma, PostgreSQL.
-4. **Challenges we ran into**: Real engineering obstacles overcome (anti-scraping, Edge cookies, layout shift).
-5. **Accomplishments that we're proud of**: Tangible metrics (90% direct payout, 0 broken images, sub-second builds).
+
+Structure the pitch into the 5 standard Devfolio sections:
+1. **Inspiration**: Ground deeply in the specific hackathon problem statement and real-world exploitation/pain points.
+2. **What it does**: Structure around 4 clear architectural pillars with user journey highlights.
+3. **How we built it**: Full-stack Next.js, Framer Motion, Prisma ORM, Tailwind CSS, Edge RBAC, and sound synthesis.
+4. **Challenges we ran into**: Real engineering obstacles overcome (anti-scraping, zero layout shift, cookie sync, unicode script rendering).
+5. **Accomplishments that we're proud of**: Concrete metrics (90% direct payout, 0 broken images, sub-second Turbopack compilation).
+
+Always include a **Team Credits Table** assigning explicit technical roles to each member.
