@@ -14,6 +14,7 @@ import {
   ArrowRight,
   ShoppingBag
 } from 'lucide-react';
+import EscrowCheckout from '@/components/EscrowCheckout';
 
 export default function CartDrawer() {
   const { 
@@ -31,6 +32,7 @@ export default function CartDrawer() {
 
   const [customerName, setCustomerName] = useState('');
   const [customerCity, setCustomerCity] = useState('');
+  const [showEscrowModal, setShowEscrowModal] = useState(false);
 
   if (!isCartOpen) return null;
 
@@ -223,10 +225,20 @@ export default function CartDrawer() {
             </div>
 
             <div className="space-y-2 pt-1">
+              {/* Smart Escrow Checkout Button */}
+              <button
+                type="button"
+                onClick={() => setShowEscrowModal(true)}
+                className="w-full py-2.5 px-4 rounded-lg bg-[#EBF3ED] hover:bg-[#D5E4D8] text-[#193225] border border-[#B8D8C0] font-medium text-xs flex items-center justify-center gap-2 shadow-2xs transition cursor-pointer"
+              >
+                <ShieldCheck className="w-4 h-4 text-[#193225]" />
+                <span>Smart Escrow Checkout (90% Direct Disbursal)</span>
+              </button>
+
               {/* WhatsApp Checkout Button */}
               <button
                 onClick={handleWhatsAppOrder}
-                className="w-full py-2.5 px-4 rounded-lg bg-[#FAF8F5] hover:bg-[#EBF3ED] text-[#193225] border border-[#E5E0D6] font-medium text-xs flex items-center justify-center gap-2 shadow-2xs transition"
+                className="w-full py-2.5 px-4 rounded-lg bg-[#FAF8F5] hover:bg-[#EBF3ED] text-[#193225] border border-[#E5E0D6] font-medium text-xs flex items-center justify-center gap-2 shadow-2xs transition cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 text-[#193225]" />
                 <span>Order on WhatsApp (+91 98765 43210)</span>
@@ -235,7 +247,7 @@ export default function CartDrawer() {
               {/* UPI Button */}
               <button
                 onClick={handleOpenUpi}
-                className="w-full py-2.5 px-4 rounded-lg bg-[#193225] hover:bg-[#12241A] text-white font-medium text-xs flex items-center justify-center gap-2 shadow-2xs transition"
+                className="w-full py-2.5 px-4 rounded-lg bg-[#193225] hover:bg-[#12241A] text-white font-medium text-xs flex items-center justify-center gap-2 shadow-2xs transition cursor-pointer"
               >
                 <QrCode className="w-4 h-4" />
                 <span>Instant UPI Payment QR</span>
@@ -244,6 +256,17 @@ export default function CartDrawer() {
           </div>
         )}
       </div>
+
+      {/* Smart Escrow Checkout Modal */}
+      {showEscrowModal && (
+        <EscrowCheckout
+          artworkName={cart.length === 1 ? cart[0].product.title : `${cart.length} Artworks in Bag`}
+          price={subtotal}
+          onClose={() => setShowEscrowModal(false)}
+          isModal={true}
+        />
+      )}
     </div>
   );
 }
+

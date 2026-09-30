@@ -17,6 +17,7 @@ import {
   Award,
   ArrowRight
 } from 'lucide-react';
+import EscrowCheckout from '@/components/EscrowCheckout';
 
 interface ProductQuickViewModalProps {
   product: Product | null;
@@ -29,6 +30,7 @@ export default function ProductQuickViewModal({ product, onClose }: ProductQuick
   const [copiedHash, setCopiedHash] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [imgMap, setImgMap] = useState<Record<number, string>>({});
+  const [showEscrowModal, setShowEscrowModal] = useState(false);
 
   if (!product) return null;
 
@@ -264,6 +266,16 @@ export default function ProductQuickViewModal({ product, onClose }: ProductQuick
                 </a>
               </div>
 
+              {/* Smart Escrow Checkout Button */}
+              <button
+                type="button"
+                onClick={() => setShowEscrowModal(true)}
+                className="w-full mt-2.5 flex items-center justify-center gap-2 bg-[#EBF3ED] hover:bg-[#D5E4D8] text-[#193225] border border-[#B8D8C0] font-medium text-xs py-2.5 px-4 rounded-lg transition shadow-2xs cursor-pointer"
+              >
+                <ShieldCheck className="w-4 h-4 text-[#193225]" />
+                <span>Smart Escrow Checkout (90% Direct Disbursal)</span>
+              </button>
+
               <div className="mt-3 text-center">
                 <Link
                   href={`/verify?tag=${encodeURIComponent(product.giTagNumber)}`}
@@ -277,6 +289,17 @@ export default function ProductQuickViewModal({ product, onClose }: ProductQuick
           </div>
         </div>
       </div>
+
+      {/* Smart Escrow Checkout Modal */}
+      {showEscrowModal && (
+        <EscrowCheckout
+          artworkName={product.title}
+          price={product.price}
+          onClose={() => setShowEscrowModal(false)}
+          isModal={true}
+        />
+      )}
     </div>
   );
 }
+
