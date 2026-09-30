@@ -3,12 +3,11 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { ARTWORKS } from '@/data/artworks';
-import { ARTISANS } from '@/data/artisans';
 import { Product } from '@/types';
 import ProductCard from '@/components/ProductCard';
 import ProductQuickViewModal from '@/components/ProductQuickViewModal';
 import SmartConsentCard from '@/components/SmartConsentCard';
-import { Search, Compass, Sparkles, SlidersHorizontal, ShieldCheck, Lock } from 'lucide-react';
+import { Search, Compass, Sparkles, ShieldCheck, Lock } from 'lucide-react';
 
 export default function ExplorePage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -16,7 +15,8 @@ export default function ExplorePage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedPigment, setSelectedPigment] = useState<string>('All');
   const [sortBy, setSortBy] = useState<'featured' | 'price-low' | 'price-high' | 'payout'>('featured');
-  const [maxPrice, setMaxPrice] = useState<number>(10000);
+  const [maxPrice] = useState<number>(100000);
+
 
   const categories = [
     'All',
@@ -162,8 +162,9 @@ export default function ExplorePage() {
             <div className="md:col-span-3">
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
+                onChange={(e) => setSortBy(e.target.value as 'featured' | 'price-low' | 'price-high' | 'payout')}
                 className="w-full p-2.5 bg-[#FAF8F5] rounded-lg border border-[#E5E0D6] text-xs text-[#1C1917] focus:outline-none focus:border-[#193225]"
+
               >
                 <option value="featured">Featured Curations</option>
                 <option value="price-low">Price: Low to High</option>

@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import { useCart } from '@/context/CartContext';
-import { X, CheckCircle, Copy, Check, ShieldCheck, ArrowRight } from 'lucide-react';
+import { X, CheckCircle, Copy, Check } from 'lucide-react';
 
 export default function UpiPaymentModal() {
-  const { isUpiModalOpen, setIsUpiModalOpen, cart, subtotal, clearCart } = useCart();
+  const { isUpiModalOpen, setIsUpiModalOpen, subtotal, clearCart } = useCart();
+
   const [copiedUpi, setCopiedUpi] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [transactionRef, setTransactionRef] = useState('');

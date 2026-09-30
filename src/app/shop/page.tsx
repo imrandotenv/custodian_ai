@@ -130,9 +130,10 @@ export default function ShopPage() {
             <div className="md:col-span-2">
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
+                onChange={(e) => setSortBy(e.target.value as 'featured' | 'price-low' | 'price-high' | 'payout')}
                 className="w-full py-2.5 px-3 bg-[#FAF8F5] rounded-lg border border-[#E5E0D6] text-xs focus:outline-none focus:border-[#193225] text-[#1C1917] font-medium"
               >
+
                 <option value="featured">Featured Pieces</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>

@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { useAudio } from '@/context/AudioContext';
-import { Play, Pause, X, Music } from 'lucide-react';
+import { Play, Pause, X } from 'lucide-react';
+
 
 export default function FloatingAudioBar() {
   const { currentTrack, isPlaying, progress, pauseTrack, resumeTrack, stopTrack } = useAudio();

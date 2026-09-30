@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Artisan } from '@/types';
-import { ShieldCheck, Volume2, Sparkles } from 'lucide-react';
+import { ShieldCheck, Volume2 } from 'lucide-react';
+
 
 interface GovtVerifiedBadgeProps {
   color?: 'sage' | 'terracotta';

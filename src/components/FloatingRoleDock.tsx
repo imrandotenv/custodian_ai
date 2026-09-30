@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useRole } from '@/context/RoleContext';
 import { UserRole } from '@/types';
 import { ShieldCheck, Palette, Compass, ChevronUp, Check, X } from 'lucide-react';
@@ -10,7 +10,7 @@ export default function FloatingRoleDock() {
   const { role, setRole, roleInfo } = useRole();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
-  const pathname = usePathname();
+
 
   const handleRoleSelect = (newRole: UserRole) => {
     setRole(newRole);

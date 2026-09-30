@@ -4,18 +4,15 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRole } from '@/context/RoleContext';
-import { UserRole } from '@/types';
 import { 
   Palette, 
   ShieldCheck, 
-  ArrowRight, 
   Eye, 
   Lock, 
   Unlock, 
-  UserCheck, 
-  ShieldAlert, 
   ArrowLeft 
 } from 'lucide-react';
+
 
 interface RoleGateBannerProps {
   requiredRole: 'custodian' | 'admin' | 'local';

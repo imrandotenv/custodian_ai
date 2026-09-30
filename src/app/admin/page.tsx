@@ -3,21 +3,17 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ARTISANS } from '@/data/artisans';
-import { ARTWORKS } from '@/data/artworks';
 import { 
-  ShieldCheck, 
   Bot, 
   Lock, 
   CheckCircle, 
-  AlertCircle,
   ArrowLeft, 
-  Cpu, 
   UserCheck, 
   Search,
-  ExternalLink,
   Award
 } from 'lucide-react';
 import RoleGateBanner from '@/components/RoleGateBanner';
+
 
 export default function AdminPage() {
   const [artisansList, setArtisansList] = useState(

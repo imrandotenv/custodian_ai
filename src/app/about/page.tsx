@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { ARTISANS } from '@/data/artisans';
-import { ShieldCheck, Award, Lock, Sparkles, Users, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Award, Lock, Sparkles, Users } from 'lucide-react';
 import ArtisanCard from '@/components/ArtisanCard';
+
 
 export default function AboutPage() {
   return (

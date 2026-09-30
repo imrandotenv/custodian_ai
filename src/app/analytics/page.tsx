@@ -5,14 +5,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ARTISANS } from '@/data/artisans';
 import { 
-  ShieldCheck, 
-  Bot, 
   Lock, 
   CheckCircle, 
   ArrowLeft, 
   Cpu
 } from 'lucide-react';
 import RoleGateBanner from '@/components/RoleGateBanner';
+
 
 export default function AnalyticsPage() {
   return (

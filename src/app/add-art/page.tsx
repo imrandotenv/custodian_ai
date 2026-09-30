@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { 
-  PlusCircle, 
   CheckCircle, 
   Mic, 
   MicOff, 
@@ -13,6 +12,7 @@ import {
   ArrowLeft,
   Info
 } from 'lucide-react';
+
 import RoleGateBanner from '@/components/RoleGateBanner';
 
 export default function AddArtPage() {

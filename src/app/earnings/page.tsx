@@ -4,10 +4,10 @@ import React from 'react';
 import Link from 'next/link';
 import { 
   ArrowLeft, 
-  Download, 
-  ShieldCheck
+  Download
 } from 'lucide-react';
 import RoleGateBanner from '@/components/RoleGateBanner';
+
 
 interface SettlementItem {
   id: string;

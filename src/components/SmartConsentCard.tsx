@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Lock, 
   Unlock, 
-  ShieldCheck, 
   Sparkles, 
   MapPin, 
   RotateCcw,
@@ -43,7 +42,7 @@ export default function SmartConsentCard({
   className = '',
 }: SmartConsentCardProps) {
   const [isUnlocked, setIsUnlocked] = useState(false);
-  const [isHoveredButton, setIsHoveredButton] = useState(false);
+
 
   const handleAgree = () => {
     setIsUnlocked(true);

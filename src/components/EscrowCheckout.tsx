@@ -9,12 +9,11 @@ import {
   Loader2, 
   X, 
   Building2, 
-  Landmark, 
   ArrowRight,
-  RotateCcw,
-  Sparkles
+  RotateCcw
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+
 
 export interface EscrowCheckoutProps {
   artworkName: string;
@@ -32,6 +31,7 @@ export default function EscrowCheckout({
   className = '',
 }: EscrowCheckoutProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
+  const [escrowRef] = useState('ESC-9482X7D');
 
   // Exact math logic breakdown
   const basePrice = Math.max(0, price);
@@ -250,8 +250,9 @@ export default function EscrowCheckout({
                 </div>
                 <div className="flex justify-between items-center text-[#5C554E]">
                   <span className="font-serif">Escrow Reference:</span>
-                  <span className="font-mono text-[11px] text-[#1C1917]">ESC-{Math.random().toString(36).substring(2, 9).toUpperCase()}</span>
+                  <span className="font-mono text-[11px] text-[#1C1917]">{escrowRef}</span>
                 </div>
+
               </div>
 
               {/* Action Buttons */}

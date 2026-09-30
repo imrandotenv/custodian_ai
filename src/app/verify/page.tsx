@@ -12,8 +12,6 @@ import {
   CheckCircle, 
   AlertCircle, 
   Lock, 
-  Award,
-  ArrowRight,
   FileCheck
 } from 'lucide-react';
 
@@ -24,14 +22,6 @@ function VerifyContent() {
   const [inputQuery, setInputQuery] = useState(initialTag);
   const [matchedProduct, setMatchedProduct] = useState<Product | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
-
-  useEffect(() => {
-    if (initialTag) {
-      handleVerify(initialTag);
-    } else {
-      handleVerify('GI-JH-SOHRAI-2020-0089');
-    }
-  }, [initialTag]);
 
   const handleVerify = (query: string) => {
     const clean = query.trim().toLowerCase();
@@ -47,6 +37,15 @@ function VerifyContent() {
     setMatchedProduct(found || null);
     setHasSearched(true);
   };
+
+  useEffect(() => {
+    if (initialTag) {
+      handleVerify(initialTag);
+    } else {
+      handleVerify('GI-JH-SOHRAI-2020-0089');
+    }
+  }, [initialTag]);
+
 
   const sampleTags = [
     'GI-JH-SOHRAI-2020-0089',

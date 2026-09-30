@@ -26,8 +26,9 @@ import { UserRole } from '@/types';
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { role, setRole, roleInfo } = useRole();
+  const { role, setRole } = useRole();
   const { itemCount, setIsCartOpen } = useCart();
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [roleDropdownOpen, setRoleDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);

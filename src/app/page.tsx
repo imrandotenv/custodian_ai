@@ -17,24 +17,20 @@ import ArtisanCard from '@/components/ArtisanCard';
 import { useRole } from '@/context/RoleContext';
 import { useRouter } from 'next/navigation';
 import { 
-  ShieldCheck, 
   ArrowRight, 
   Volume2, 
   VolumeX, 
-  Sparkles, 
   Check, 
   MessageCircle,
   MapPin,
-  Heart,
-  Palette,
-  Award,
-  UserCheck
+  Palette
 } from 'lucide-react';
 
 export default function HomePage() {
   const router = useRouter();
-  const { role, setRole } = useRole();
+  const { setRole } = useRole();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
   const [selectedArtisanForLore, setSelectedArtisanForLore] = useState<Artisan | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const { toggleAmbientSound, isAmbientPlaying } = useAudio();
