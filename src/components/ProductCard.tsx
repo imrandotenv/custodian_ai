@@ -79,7 +79,7 @@ export default function ProductCard({
           <motion.div
             className="relative w-full h-full"
             animate={{
-              filter: isUnlocked ? 'blur(0px)' : 'blur(16px)',
+              filter: isUnlocked ? 'blur(0px)' : 'blur(20px)',
               scale: isUnlocked ? 1 : 1.06,
             }}
             transition={{ duration: 0.5, ease: 'easeOut' as const }}
@@ -102,7 +102,7 @@ export default function ProductCard({
                 initial={{ opacity: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.35, ease: 'easeOut' as const }}
-                className="absolute inset-0 z-20 flex flex-col items-center justify-center p-3 bg-[#1C1917]/35 backdrop-blur-md select-none"
+                className="absolute inset-0 z-20 flex flex-col items-center justify-center p-3 bg-[#1C1917]/35 backdrop-blur-lg select-none"
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsUnlocked(true);
@@ -114,13 +114,13 @@ export default function ProductCard({
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {/* Sleek Lock Icon & Small Text 'Protected Asset' */}
+                  {/* Sleek Lock Icon & Small Text 'Protected Cultural Asset' */}
                   <div className="flex items-center gap-1.5 text-[#1C1917]">
                     <div className="w-5 h-5 rounded-full bg-[#1C1917]/10 flex items-center justify-center text-[#1C1917]">
                       <Lock className="w-2.5 h-2.5" />
                     </div>
                     <span className="font-display text-[9px] uppercase tracking-[0.2em] font-semibold text-[#1C1917]">
-                      Protected Asset
+                      Protected Cultural Asset
                     </span>
                   </div>
 
@@ -128,7 +128,7 @@ export default function ProductCard({
                     Customary Protocol Active
                   </p>
 
-                  {/* Interactive 'Take Pledge to View' button */}
+                  {/* Interactive 'Take Pledge' button */}
                   <motion.button
                     type="button"
                     onClick={(e) => {
@@ -143,7 +143,7 @@ export default function ProductCard({
                     transition={{ duration: 0.25 }}
                   >
                     <ShieldCheck className="w-3 h-3 text-[#849A89]" />
-                    <span>Take Pledge to View</span>
+                    <span>Take Pledge</span>
                   </motion.button>
                 </motion.div>
               </motion.div>
