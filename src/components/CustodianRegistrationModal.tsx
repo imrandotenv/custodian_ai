@@ -5,11 +5,7 @@ import {
   X, 
   CheckCircle, 
   ShieldCheck, 
-  Palette, 
-  UserCheck, 
   Info, 
-  Building2, 
-  Sparkles,
   ArrowRight
 } from 'lucide-react';
 import { useRole } from '@/context/RoleContext';
@@ -32,7 +28,6 @@ export default function CustodianRegistrationModal({
   const [craftSpecialty, setCraftSpecialty] = useState('Sohrai Murals');
   const [upiId, setUpiId] = useState('');
   const [adiKarmayogiId, setAdiKarmayogiId] = useState('');
-  const [aiConsentPolicy, setAiConsentPolicy] = useState('CC-TRIBAL-1.0-STRICT');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [generatedCustodianId, setGeneratedCustodianId] = useState('');

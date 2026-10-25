@@ -4,15 +4,12 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useRole } from '@/context/RoleContext';
 import { ARTWORKS } from '@/data/artworks';
 import { ARTISANS } from '@/data/artisans';
 import { 
-  BarChart3, 
   ShieldCheck, 
   PlusCircle, 
   Wallet, 
-  Eye, 
   Bot, 
   Lock, 
   ToggleLeft,
@@ -22,17 +19,14 @@ import {
   CheckCircle2,
   Award,
   Sparkles,
-  Globe,
   Smartphone,
-  ShoppingBag,
-  ExternalLink
+  ShoppingBag
 } from 'lucide-react';
 import RoleGateBanner from '@/components/RoleGateBanner';
 import CustodianRegistrationModal from '@/components/CustodianRegistrationModal';
 import { GovtVerifiedBadge } from '@/components/ArtisanCard';
 
 export default function CustodianDashboard() {
-  const { role, setRole } = useRole();
   const currentArtisan = ARTISANS[1]; // Somra Hembrom (Ramgarh Cantt)
   const [isOnboardingModalOpen, setIsOnboardingModalOpen] = useState(false);
   const [artworksState, setArtworksState] = useState(

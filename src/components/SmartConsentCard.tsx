@@ -42,7 +42,6 @@ export default function SmartConsentCard({
   className = '',
 }: SmartConsentCardProps) {
   const [isUnlocked, setIsUnlocked] = useState(false);
-  const [isHoveredButton, setIsHoveredButton] = useState(false);
 
 
   const handleAgree = () => {
@@ -175,8 +174,6 @@ export default function SmartConsentCard({
                 <div className="pt-1">
                   <motion.button
                     onClick={handleAgree}
-                    onMouseEnter={() => setIsHoveredButton(true)}
-                    onMouseLeave={() => setIsHoveredButton(false)}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="w-full py-3 px-5 rounded-lg bg-[#C25934] hover:bg-[#A94827] text-white text-xs font-medium tracking-wide shadow-md transition-colors duration-200 flex items-center justify-center gap-2 group"

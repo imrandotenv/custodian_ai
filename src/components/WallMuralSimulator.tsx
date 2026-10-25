@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Palette, MessageCircle, Sun, Sunset, Flame } from 'lucide-react';
+import { MessageCircle, Sun, Sunset, Flame } from 'lucide-react';
 
 interface MuralStyle {
   id: string;
@@ -49,7 +49,7 @@ export default function WallMuralSimulator() {
   const [lighting, setLighting] = useState<'day' | 'sunset' | 'candle'>('day');
   const [widthFt, setWidthFt] = useState<number>(12);
   const [heightFt, setHeightFt] = useState<number>(9);
-  const [roomType, setRoomType] = useState<string>('Living Room');
+  const roomType = 'Living Room';
 
   const sqFt = widthFt * heightFt;
   const totalCost = sqFt * activeStyle.ratePerSqFt;

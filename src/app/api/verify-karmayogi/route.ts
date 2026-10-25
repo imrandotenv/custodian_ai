@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
       },
       { status: 404 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       {
         verified: false,

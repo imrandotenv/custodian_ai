@@ -11,7 +11,7 @@ async function main() {
     // Attempt database connection check
     await prisma.$connect();
     console.log('🔌 Connected to Database successfully.\n');
-  } catch (connectError: any) {
+  } catch {
     console.warn('⚠️ Could not connect to active PostgreSQL server (DATABASE_URL unreachable or offline).');
     console.log('📋 Running Seed Contract Verification (Mock Mode)...\n');
     logPlannedSeedData();

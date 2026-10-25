@@ -2,7 +2,6 @@
 // Empirical test harness for Challenger 2: API & Feature Fidelity
 
 import fs from 'fs';
-import path from 'path';
 
 const BASE_URL = 'http://localhost:3000';
 
